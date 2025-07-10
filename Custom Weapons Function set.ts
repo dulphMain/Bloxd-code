@@ -72,7 +72,7 @@ function playerCommand(playerId, command) {
 		if (commandName != "craft" && commandName != "help") {
 			return false
 		} else if (commandName == "help") {
-			api.sendMessage(playerId, "You can craft the following items :", {color : "aqua"}}
+			api.sendMessage(playerId, "You can craft the following items :", {color : "aqua"})
 			var keys = Object.keys(craftingRecipes)
 			for (const key in keys) {
 				if (!craftingRecipes[keys[+key]].crafted) {
