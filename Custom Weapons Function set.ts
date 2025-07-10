@@ -6,17 +6,18 @@ function onPlayerDamagingOtherPlayer(attackingPlayer, damagedPlayer, damageDealt
 	const held = api.getItemSlot(damagedPlayer, 48)
 	const currentHealth = api.getHealth(damagedPlayer);
 	const remainingHealth = currentHealth - damageDealt;
-	if (remainingHealth <= 0 && held?.attributes?.customDisplayName === "Totem") {
+	if (remainingHealth <= 0 && held.attributes?.customDisplayName === "Totem") {
 		// Restore health to full
-		api.applyHealthChange(damagedPlayer, 20);
-		api.setShieldAmount(damagedPlayer, 20);
+		api.setHealth(damagedPlayer, 20);
+		api.setShieldAmount(damagedPlayer, 20 + damageDealt);
+		
 		// Apply regeneration effect
 		api.applyEffect(damagedPlayer, "Health Regen", 20000, { inbuiltLevel: 2 });
 		api.setItemSlot(damagedPlayer, 48, "Air", 1)
 		// Play 5x5 particle explosion at player's position
 		const [x, y, z] = api.getPosition(damagedPlayer);
 		const py = y + 1;
-
+		
 		for(let dx=-2;dx<=2;dx++)for(let dz=-2;dz<=2;dz++)api.playParticleEffect({dir1:[-1,-1,-1],dir2:[1,1,1],pos1:[x+dx,py,z+dz],pos2:[x+dx+1,py+1,z+dz+1],texture:"square_particle",minLifeTime:.2,maxLifeTime:.6,minEmitPower:2,maxEmitPower:2,minSize:.25,maxSize:.35,manualEmitCount:20,gravity:[0,-10,0],colorGradients:[{timeFraction:0,minColor:[0,200,0,1],maxColor:[255,255,0,1]},],velocityGradients:[{timeFraction:0,factor:1,factor2:1},],blendMode:1});
 	}
 	
