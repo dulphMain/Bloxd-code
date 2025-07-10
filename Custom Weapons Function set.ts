@@ -49,7 +49,7 @@ function onPlayerDamagingOtherPlayer(attackingPlayer, damagedPlayer, damageDealt
 						api.setClientOption(attackingPlayer, "maxHealth", api.getClientOption(attackingPlayer, "maxHealth") + effects[counter].value)
 						api.setClientOption(damagedPlayer, "maxHealth", api.getClientOption(damagedPlayer, "maxHealth") - effects[counter].value)
 					} else {
-						api.applyEffect(damagedPlayer, effects[counter].effectName, effects[counter].effectDuration, {icon:itemHeld.name, displayName:effects[counter].effectName, inBuiltLevel : effects[counter].value})
+						api.applyEffect(damagedPlayer, effects[counter].effectName, effects[counter].effectDuration, {icon:itemHeld.name, displayName:effects[counter].effectName, inbuiltLevel : effects[counter].value})
 					}
 				} else {
 					api.sendMessage(attackingPlayer, "This effect is still on cooldown for " + (effects[counter].effectCooldown - (Date.now() - effects[counter].lastUsedEffect)) / 1000 + "s", {color:"red"})
