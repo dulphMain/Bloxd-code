@@ -7,3 +7,6 @@ This adds a new command, with the following syntax : /groupmsg ["player1Name", "
 
 ## Custom weapons
 Check Custom Weapons.md
+
+## Custom bosses
+Check Custom bosses.md
